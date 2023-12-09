@@ -1,9 +1,66 @@
 function updateWeather(response) {
   let temperatureElement = document.querySelector("#temperature");
-  temperatureElement.innerHTML = Math.round(response.data.temperature.current);
-
   let cityElement = document.querySelector("#weather-place-city");
+  let descriptionElement = document.querySelector("#condition-description");
+  let humidityElement = document.querySelector("#humidity");
+  let windElement = document.querySelector("#wind");
+  let date = new Date(response.data.time * 1000);
+  let timeElement = document.querySelector("#day-time");
+  let monthElement = document.querySelector("#month-date");
+  let iconElement = document.querySelector("#icon");
+
+  console.log(response);
+
+  temperatureElement.innerHTML = Math.round(response.data.temperature.current);
+  descriptionElement.innerHTML = response.data.condition.description;
+  humidityElement.innerHTML = `${response.data.temperature.humidity}%`;
+  windElement.innerHTML = `${response.data.wind.speed}km/h`;
+  timeElement.innerHTML = formatDate(date);
+  monthElement.innerHTML = formatMonth(date);
+  iconElement.innerHTML = `<img src="${response.data.condition.icon_url}" />`;
   cityElement.innerHTML = response.data.city;
+}
+
+function formatDate(date) {
+  let days = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
+  let dayWord = days[date.getDay()];
+  let hour = date.getHours();
+  let minutes = date.getMinutes();
+  if (minutes < 10) {
+    minutes = `0${minutes}`;
+  }
+  if (hour < 10) {
+    hour = `0${hour}`;
+  }
+  return `${dayWord}, ${hour}:${minutes}`;
+}
+
+function formatMonth(date) {
+  let month = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ];
+  let monthWord = month[date.getMonth()];
+  let dateValue = date.getDate();
+  return `${monthWord}, ${dateValue}`;
 }
 
 function searchCity(city) {

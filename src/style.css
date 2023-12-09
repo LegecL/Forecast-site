@@ -77,7 +77,7 @@ a {
 .weather-condition {
   display: flex;
   justify-content: right;
-  margin: -90px 0 35px 0;
+  margin: -120px 0 35px 0;
   color: #35280d;
 }
 
