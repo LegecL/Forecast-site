@@ -10,6 +10,7 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="src/style.css" />
+    <script src="https://unpkg.com/axios@1.1.2/dist/axios.min.js"></script>
     <title>Forecast</title>
   </head>
   <body>
@@ -28,7 +29,7 @@
       </header>
       <main>
         <div class="weather-place">
-          <h1 id="weather-place-city">Kyiv</h1>
+          <h1 id="weather-place-city"></h1>
         </div>
         <div class="weather-time">
           <p>
@@ -39,7 +40,7 @@
         </div>
         <div class="weather-temperature">
           <div class="weather-condition-icon">☁️</div>
-          <div class="weather-temperature-value">-2</div>
+          <div class="weather-temperature-value" id="temperature"></div>
           <div class="weather-temperature-unit">&deg;C</div>
         </div>
         <div class="weather-condition">
