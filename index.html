@@ -15,22 +15,39 @@
   <body>
     <div class="weather-block">
       <header>
-        <form>
-          <input type="search" placeholder="Enter a city..." required id="" />
-          <input type="submit" value="Search" />
+        <form class="search-form">
+          <input
+            type="search"
+            placeholder="Enter a city..."
+            required
+            class="search-form-input"
+          />
+          <input type="submit" value="Search" class="search-form-submit" />
         </form>
       </header>
       <main>
-        <div class="">
+        <div class="weather-place">
           <h1>Kyiv</h1>
-          <p id="">Saturday 10:19</p>
         </div>
-        <div class="">☁️-2°C</div>
-        <div class="">
-          <p id="">
+        <div class="weather-time">
+          <p>
+            Saturday 10:19
+            <br />
+            09 December
+          </p>
+        </div>
+        <div class="weather-temperature">
+          <div class="weather-condition-icon">☁️</div>
+          <div class="weather-temperature-value">-2</div>
+          <div class="weather-temperature-unit">&deg;C</div>
+        </div>
+        <div class="weather-condition">
+          <p>
             Overcast clouds
             <br />
-            Humidity: 90%, Wind: 0.45km/h
+            Humidity: <strong>90%</strong>
+            <br />
+            Wind: <strong>0.45km/h</strong>
           </p>
         </div>
       </main>
