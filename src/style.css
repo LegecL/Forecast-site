@@ -29,9 +29,6 @@ a {
   border-radius: 15px;
 }
 
-.search-form {
-}
-
 .search-form-input {
   background-color: #f8f0df;
   font-size: 16px;
@@ -94,4 +91,41 @@ a {
 .weather-temperature-value {
   font-weight: bold;
   font-size: 76px;
+}
+
+.weather-forecast {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 30px;
+}
+
+.forecast-days {
+  text-align: center;
+  font-size: 18px;
+  color: #35280d;
+  opacity: 0.7;
+  line-height: 20px;
+  margin-bottom: 10px;
+}
+
+.forecast-icon {
+  font-size: 38px;
+  text-align: center;
+}
+
+.forecast-temperature {
+  font-size: 15px;
+  color: #35280d;
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+}
+
+.forecast-min-day-temperature {
+  opacity: 0.7;
+  padding: 0 5px;
+}
+
+.forecast-max-day-temperature {
+  padding: 0 5px;
 }
