@@ -19,6 +19,8 @@ function updateWeather(response) {
   monthElement.innerHTML = formatMonth(date);
   iconElement.innerHTML = `<img src="${response.data.condition.icon_url}" />`;
   cityElement.innerHTML = response.data.city;
+
+  getForecast(response.data.city);
 }
 
 function formatDate(date) {
@@ -75,23 +77,46 @@ function searchSubmit(event) {
   searchCity(searchInput.value);
 }
 
-function displayForecast() {
-  let days = [`Fri`, `Sat`, `Sun`, `Mon`, `Tue`];
+function formatDay(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+
+  return days[date.getDay()];
+}
+
+function getForecast(city) {
+  let apiKey = "fa29c710ebc43ec2tbd44083o39347b6";
+  let apiUrl = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${apiKey}&units=metric`;
+  axios(apiUrl).then(displayForecast);
+  console.log(apiUrl);
+}
+
+function displayForecast(response) {
+  console.log(response.data);
+
   let forecastHtml = "";
 
-  days.forEach(function (day) {
-    forecastHtml =
-      forecastHtml +
-      `
+  response.data.daily.forEach(function (day, index) {
+    if (index < 5) {
+      forecastHtml =
+        forecastHtml +
+        `
   <div class="column-day">
-    <div class="forecast-days">${day}</div>
-    <div class="forecast-icon">🌨️</div>
+    <div class="forecast-days">${formatDay(day.time)}</div>
+    <div>
+    <img src="${day.condition.icon_url}" class="forecast-icon" />
+    </div>
     <div class="forecast-temperature">
-      <span class="forecast-max-day-temperature">-1&deg;</span>
-      <span class="forecast-min-day-temperature">-4&deg;</span>
+      <span class="forecast-max-day-temperature">${Math.round(
+        day.temperature.maximum
+      )}&deg;</span>
+      <span class="forecast-min-day-temperature">${Math.round(
+        day.temperature.minimum
+      )}&deg;</span>
     </div>
   </div>
 `;
+    }
   });
 
   let forecastElement = document.querySelector("#forecast");
@@ -102,5 +127,3 @@ let searchFormElement = document.querySelector("#search-form");
 searchFormElement.addEventListener("submit", searchSubmit);
 
 searchCity("Kyiv");
-
-displayForecast();

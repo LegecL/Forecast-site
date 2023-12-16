@@ -109,8 +109,9 @@ a {
 }
 
 .forecast-icon {
-  font-size: 38px;
-  text-align: center;
+  width: 70%;
+  display: block;
+  margin: 0 auto;
 }
 
 .forecast-temperature {
@@ -119,6 +120,7 @@ a {
   margin-top: 10px;
   display: flex;
   justify-content: center;
+  margin-bottom: 20px;
 }
 
 .forecast-min-day-temperature {
